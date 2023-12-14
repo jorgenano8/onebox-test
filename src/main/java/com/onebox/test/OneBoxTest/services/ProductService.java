@@ -27,6 +27,8 @@ public class ProductService {
 		this.productRepository.addProduct(product);
 	}
 	
+	public void removeProductById(int productId) {
+		this.productRepository.removeProductById(productId);
+	}
 	
-
 }

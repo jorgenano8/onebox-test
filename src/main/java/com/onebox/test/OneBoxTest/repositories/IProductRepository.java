@@ -23,6 +23,8 @@ public class IProductRepository {
 		this.addProduct(new ProductModel(3, "Patinete", 29.90));
 		this.addProduct(new ProductModel(4, "Triciclo", 39.90));
 		this.addProduct(new ProductModel(5, "Patinete eléctrico", 299.90));
+		this.addProduct(new ProductModel(6, "Silla de ruedas", 450.00));
+		this.addProduct(new ProductModel(7, "Bicicleta con ruedines", 119.90));
 	}
 	
 	public List<ProductModel> getAllProducts(){
