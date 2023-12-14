@@ -23,6 +23,10 @@ public class ProductService {
 		return (Optional<ProductModel>) productRepository.getProductById(productId);
 	}
 	
+	public void addProduct(ProductModel product) {
+		this.productRepository.addProduct(product);
+	}
+	
 	
 
 }

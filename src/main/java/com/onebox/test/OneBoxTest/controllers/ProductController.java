@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,5 +30,12 @@ public class ProductController {
 	public Optional<ProductModel> getProductById(@PathVariable int productId){
 		return this.productService.getProductById(productId);
 	}
+	
+	@PostMapping
+	public void addProduct(@RequestBody ProductModel product){
+		this.productService.addProduct(product);
+		
+	}
+	
 
 }
