@@ -7,9 +7,15 @@ public class CartModel {
 	private int id;
 	private ArrayList<ProductModel> products;
 	
-	public CartModel(int id, ArrayList<ProductModel> products) {
-		this.id=id;
+	private static int countId = 1;
+	
+	public CartModel(ArrayList<ProductModel> products) {
+		this.id=countId++;;
 		this.products=products;
+	}
+
+	public CartModel() {
+		super();
 	}
 
 	public int getId() {

@@ -18,13 +18,13 @@ public class IProductRepository {
 	}
 	
 	private void startProducts() {
-		this.addProduct(new ProductModel(1, "Bicicleta", 99.90));
-		this.addProduct(new ProductModel(2, "Triciclo", 49.90));
-		this.addProduct(new ProductModel(3, "Patinete", 29.90));
-		this.addProduct(new ProductModel(4, "Triciclo", 39.90));
-		this.addProduct(new ProductModel(5, "Patinete eléctrico", 299.90));
-		this.addProduct(new ProductModel(6, "Silla de ruedas", 450.00));
-		this.addProduct(new ProductModel(7, "Bicicleta con ruedines", 119.90));
+		this.addProduct(new ProductModel("Bicicleta", 99.90));
+		this.addProduct(new ProductModel("Triciclo", 49.90));
+		this.addProduct(new ProductModel("Patinete", 29.90));
+		this.addProduct(new ProductModel("Triciclo", 39.90));
+		this.addProduct(new ProductModel("Patinete eléctrico", 299.90));
+		this.addProduct(new ProductModel("Silla de ruedas", 450.00));
+		this.addProduct(new ProductModel("Bicicleta con ruedines", 119.90));
 	}
 	
 	public List<ProductModel> getAllProducts(){

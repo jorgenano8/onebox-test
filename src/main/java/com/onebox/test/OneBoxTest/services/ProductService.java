@@ -24,7 +24,7 @@ public class ProductService {
 	}
 	
 	public void addProduct(ProductModel product) {
-		this.productRepository.addProduct(product);
+		this.productRepository.addProduct(new ProductModel(product.getDescription(), product.getAmount()));
 	}
 	
 	public void removeProductById(int productId) {

@@ -6,12 +6,19 @@ public class ProductModel {
 	private String description;
 	private double amount;
 	
-	public ProductModel(int id, String description, double amount) {
-		this.id=id;
+	private static int countId=  1;
+	
+	public ProductModel(String description, double amount) {
+		this.id=countId++;
 		this.description=description;
 		this.amount=amount;
 		
 	}
+	
+	public ProductModel() {
+		super();
+	}
+	
 	public int getId() {
 		return id;
 	}
