@@ -25,13 +25,15 @@ public class ICartRepository {
 		this.cartList.add(cart);
 	}
 	
-	public void addProductToCart(ProductModel product, int cartId) {
-		this.cartList.stream().filter(cart -> cart.getId() == cartId).findFirst().get().addProduct(product);
+	public void addProductToCart(ProductModel product, CartModel cartModel) {
+		this.cartList.stream().filter(cart -> cart.getId() == cartModel.getId()).findFirst().get().addProduct(product);
 	}
 	
-	public void addProductsToCart(ArrayList<ProductModel> products, int cartId) {
-		this.cartList.stream().filter(cart -> cart.getId() == cartId).findFirst().get().addProducts(products);
+	/*
+	public void addProductsToCart(ArrayList<ProductModel> products, CartModel cartModel) {
+		this.cartList.stream().filter(cart -> cart.getId() == cartModel.getId()).findFirst().get().addProducts(products);
 	}
+	*/
 	
 	public void removeCartById(int cartId){
 		this.cartList.removeIf(cart -> cart.getId() == cartId);

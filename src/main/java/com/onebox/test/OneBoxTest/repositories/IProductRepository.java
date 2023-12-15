@@ -21,7 +21,7 @@ public class IProductRepository {
 		this.addProduct(new ProductModel("Bicicleta", 99.90));
 		this.addProduct(new ProductModel("Triciclo", 49.90));
 		this.addProduct(new ProductModel("Patinete", 29.90));
-		this.addProduct(new ProductModel("Triciclo", 39.90));
+		this.addProduct(new ProductModel("Patín", 39.90));
 		this.addProduct(new ProductModel("Patinete eléctrico", 299.90));
 		this.addProduct(new ProductModel("Silla de ruedas", 450.00));
 		this.addProduct(new ProductModel("Bicicleta con ruedines", 119.90));

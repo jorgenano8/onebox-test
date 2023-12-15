@@ -16,32 +16,39 @@ public class CartService {
 	@Autowired
 	ICartRepository cartRepository;
 	
-	//GET
 	public ArrayList<CartModel> getCarts(){
 		return (ArrayList<CartModel>) cartRepository.getAllCarts();
 	}
 	
-	//GET
 	public Optional<CartModel> getCartById(int cartId){
 		return (Optional<CartModel>) cartRepository.getCartById(cartId);
 	}
 	
-	//POST
 	public void addCart(CartModel cart) {
-		this.cartRepository.addCart(new CartModel(cart.getProducts()));
+		if(cart.getProducts()!=null) {
+			this.cartRepository.addCart(new CartModel(cart.getProducts()));
+		}else {
+			this.cartRepository.addCart(new CartModel());
+		}
 	}
 	
-	//PUT
 	public void addProductToCart(ProductModel product, int cartId) {
-		this.cartRepository.addProductToCart(product, cartId);
+		ProductModel newProductToCart = new ProductModel(product.getId(), product.getDescription(), product.getAmount());
+
+		this.cartRepository.addProductToCart(newProductToCart, this.cartRepository.getCartById(cartId).get());
 	}
 	
-	//PUT
+	/*
 	public void addProductsToCart(ArrayList<ProductModel> products, int cartId) {
-		this.cartRepository.addProductsToCart(products, cartId);
+		if(this.cartRepository.getCartById(cartId).get()!=null) {
+			ArrayList<ProductModel> newProducts = new ArrayList<>();
+			products.forEach((product) -> newProducts.add(new ProductModel(product.getId(), product.getDescription(), product.getAmount())));
+			this.cartRepository.addProductsToCart(newProducts, this.cartRepository.getCartById(cartId).get());
+		}
 	}
+	*/
+
 	
-	//DELETE
 	public void removeCartById(int cartId) {
 		this.cartRepository.removeCartById(cartId);
 	}

@@ -6,7 +6,7 @@ public class ProductModel {
 	private String description;
 	private double amount;
 	
-	private static int countId=  1;
+	private static int countId = 0;
 	
 	public ProductModel(String description, double amount) {
 		this.id=countId++;
@@ -15,8 +15,15 @@ public class ProductModel {
 		
 	}
 	
+	public ProductModel(int id, String description, double amount) {
+		this.id=id;
+		this.description=description;
+		this.amount=amount;
+		
+	}
+	
 	public ProductModel() {
-		super();
+		
 	}
 	
 	public int getId() {

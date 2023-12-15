@@ -10,12 +10,12 @@ public class CartModel {
 	private static int countId = 1;
 	
 	public CartModel(ArrayList<ProductModel> products) {
-		this.id=countId++;;
+		this.id=countId++;
 		this.products=products;
 	}
 
 	public CartModel() {
-		super();
+		this.products=new ArrayList<>();
 	}
 
 	public int getId() {
@@ -34,9 +34,11 @@ public class CartModel {
 		this.products.add(product);
 	}
 	
+	/*
 	public void addProducts(ArrayList<ProductModel> products) {
 		this.products.addAll(products);
 	}
+	*/
 
 	public void setProducts(ArrayList<ProductModel> products) {
 		this.products = products;
