@@ -38,13 +38,13 @@ public class CartService {
 	}
 	
 
-	public void addProductsToCart(ArrayList<ProductModel> products, int cartId) {
+	public void updateProductsToCart(ArrayList<ProductModel> products, int cartId) {
 		if(this.cartRepository.getCartById(cartId).get()!=null) {
 			ArrayList<ProductModel> newProducts = new ArrayList<>();
 			products.forEach((product) -> {
 				newProducts.add(new ProductModel(product.getId(), product.getDescription(), product.getAmount()));
 			});
-			this.cartRepository.addProductsToCart(newProducts, this.cartRepository.getCartById(cartId).get());
+			this.cartRepository.updateProductsToCart(newProducts, this.cartRepository.getCartById(cartId).get());
 		}
 	}
 

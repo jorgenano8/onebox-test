@@ -30,7 +30,7 @@ public class ICartRepository {
 	}
 	
 
-	public void addProductsToCart(ArrayList<ProductModel> products, CartModel cartModel) {
+	public void updateProductsToCart(ArrayList<ProductModel> products, CartModel cartModel) {
 		this.cartList.stream().filter(cart -> cart.getId() == cartModel.getId()).findFirst().get().setProducts(products);
 	}
 

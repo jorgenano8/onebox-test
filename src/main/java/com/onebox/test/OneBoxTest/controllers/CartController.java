@@ -47,8 +47,8 @@ public class CartController {
 	
 
 	@PutMapping(path="/{cartId}")
-	public void addProductsToCart(@RequestBody ArrayList<ProductModel> products, @PathVariable int cartId) {
-		this.cartService.addProductsToCart(products, cartId);
+	public void updateProductsToCart(@RequestBody ArrayList<ProductModel> products, @PathVariable int cartId) {
+		this.cartService.updateProductsToCart(products, cartId);
 	}
 
 	
