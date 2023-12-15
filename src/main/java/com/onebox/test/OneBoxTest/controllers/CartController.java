@@ -40,17 +40,16 @@ public class CartController {
 	}
 	
 	
-	@PutMapping(path="/{cartId}")
+	@PostMapping(path="/{cartId}")
 	public void addProductToCart(@RequestBody ProductModel product, @PathVariable int cartId) {
 		this.cartService.addProductToCart(product, cartId);
 	}
 	
-	/*
+
 	@PutMapping(path="/{cartId}")
 	public void addProductsToCart(@RequestBody ArrayList<ProductModel> products, @PathVariable int cartId) {
 		this.cartService.addProductsToCart(products, cartId);
 	}
-	*/
 
 	
 	@DeleteMapping(path="/{cartId}")

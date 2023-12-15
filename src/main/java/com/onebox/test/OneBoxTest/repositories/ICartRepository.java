@@ -29,11 +29,11 @@ public class ICartRepository {
 		this.cartList.stream().filter(cart -> cart.getId() == cartModel.getId()).findFirst().get().addProduct(product);
 	}
 	
-	/*
+
 	public void addProductsToCart(ArrayList<ProductModel> products, CartModel cartModel) {
-		this.cartList.stream().filter(cart -> cart.getId() == cartModel.getId()).findFirst().get().addProducts(products);
+		this.cartList.stream().filter(cart -> cart.getId() == cartModel.getId()).findFirst().get().setProducts(products);
 	}
-	*/
+
 	
 	public void removeCartById(int cartId){
 		this.cartList.removeIf(cart -> cart.getId() == cartId);
