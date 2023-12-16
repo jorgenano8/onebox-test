@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.onebox.test.OneBoxTest.models.ProductModel;
 import com.onebox.test.OneBoxTest.services.ProductService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/products")
@@ -33,8 +38,13 @@ public class ProductController {
 	}
 	
 	@PostMapping
-	public void addProduct(@RequestBody ProductModel product){
+	public ResponseEntity<String> addProduct(@Valid @RequestBody ProductModel product, BindingResult bindingResult){
+		if(bindingResult.hasErrors()) {
+			return new ResponseEntity<>("Error creating product. Check the fields: " + bindingResult.getFieldError().getDefaultMessage() , HttpStatus.BAD_REQUEST);
+		}
+		
 		this.productService.addProduct(product);
+		return new ResponseEntity<>("Product successfully created.", HttpStatus.OK);
 	}
 	
 	@DeleteMapping(path="/{productId}")
