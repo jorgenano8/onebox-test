@@ -25,11 +25,14 @@ public class CartService {
 	}
 	
 	public void addCart(CartModel cart) {
+		CartModel newCartModel;
 		if(cart.getProducts()!=null) {
-			this.cartRepository.addCart(new CartModel(cart.getProducts()));
+			newCartModel = new CartModel(cart.getProducts());
 		}else {
-			this.cartRepository.addCart(new CartModel());
+			newCartModel = new CartModel();
 		}
+		
+		this.cartRepository.addCart(newCartModel);
 	}
 	
 	public void addProductToCart(ProductModel product, int cartId) {
@@ -37,7 +40,6 @@ public class CartService {
 		this.cartRepository.addProductToCart(newProductToCart, this.cartRepository.getCartById(cartId).get());
 	}
 	
-
 	public void updateProductsToCart(ArrayList<ProductModel> products, int cartId) {
 		if(this.cartRepository.getCartById(cartId).get()!=null) {
 			ArrayList<ProductModel> newProducts = new ArrayList<>();
@@ -48,8 +50,6 @@ public class CartService {
 		}
 	}
 
-
-	
 	public void removeCartById(int cartId) {
 		this.cartRepository.removeCartById(cartId);
 	}
