@@ -31,13 +31,14 @@ public class IProductRepository {
 		return this.productList;
 	}
 	
-	public Optional<ProductModel> getProductById(int productId) {
+	public Optional<ProductModel> getProductById(Long productId) {
 		return this.productList.stream().filter(product -> product.getId() == productId).findFirst();
 	}
 	
 	public void addProduct(ProductModel product) {
 		this.productList.add(product);
 	}
+	
 	
 	public void removeProductById(int productId) {
 		this.productList.removeIf(product -> product.getId() == productId);

@@ -19,7 +19,7 @@ public class ICartRepository {
 		return this.cartList;
 	}
 	
-	public Optional<CartModel> getCartById(int cartId) {
+	public Optional<CartModel> getCartById(Long cartId) {
 		return this.cartList.stream().filter(cart -> cart.getId() == cartId).findFirst();
 	}
 	
@@ -35,7 +35,7 @@ public class ICartRepository {
 		this.cartList.stream().filter(cart -> cart.getId() == cartModel.getId()).findFirst().get().setProducts(products);
 	}
 
-	public void removeCartById(int cartId){
+	public void removeCartById(Long cartId){
 		this.cartList.removeIf(cart -> cart.getId() == cartId);
 	}
 	

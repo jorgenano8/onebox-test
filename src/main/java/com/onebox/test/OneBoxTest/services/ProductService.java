@@ -19,7 +19,7 @@ public class ProductService {
 		return (ArrayList<ProductModel>) productRepository.getAllProducts();
 	}
 	
-	public Optional<ProductModel> getProductById(int productId){
+	public Optional<ProductModel> getProductById(Long productId){
 		return (Optional<ProductModel>) productRepository.getProductById(productId);
 	}
 	

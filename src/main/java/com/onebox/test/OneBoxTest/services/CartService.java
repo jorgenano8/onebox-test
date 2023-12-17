@@ -20,7 +20,7 @@ public class CartService {
 		return (ArrayList<CartModel>) cartRepository.getAllCarts();
 	}
 	
-	public Optional<CartModel> getCartById(int cartId){
+	public Optional<CartModel> getCartById(Long cartId){
 		return (Optional<CartModel>) cartRepository.getCartById(cartId);
 	}
 	
@@ -35,12 +35,13 @@ public class CartService {
 		this.cartRepository.addCart(newCartModel);
 	}
 	
-	public void addProductToCart(ProductModel product, int cartId) {
+	public void addProductToCart(ProductModel product, Long cartId) {
 		ProductModel newProductToCart = new ProductModel(product.getId(), product.getDescription(), product.getAmount());
 		this.cartRepository.addProductToCart(newProductToCart, this.cartRepository.getCartById(cartId).get());
+
 	}
 	
-	public void updateProductsToCart(ArrayList<ProductModel> products, int cartId) {
+	public void updateProductsToCart(ArrayList<ProductModel> products, Long cartId) {
 		if(this.cartRepository.getCartById(cartId).get()!=null) {
 			ArrayList<ProductModel> newProducts = new ArrayList<>();
 			products.forEach((product) -> {
@@ -50,7 +51,7 @@ public class CartService {
 		}
 	}
 
-	public void removeCartById(int cartId) {
+	public void removeCartById(Long cartId) {
 		this.cartRepository.removeCartById(cartId);
 	}
 	

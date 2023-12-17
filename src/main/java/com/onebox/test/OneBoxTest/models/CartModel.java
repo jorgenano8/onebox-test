@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public class CartModel {
 	
-	private int id;
+	private Long id;
 	private ArrayList<ProductModel> products;
 	private LocalDateTime dateCreation;
 	
-	private static int countId = 1;
+	private static long countId = 1;
 	
 	public CartModel(ArrayList<ProductModel> products) {
 		this.id=countId++;
@@ -22,11 +22,11 @@ public class CartModel {
 		this.dateCreation=LocalDateTime.now();
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

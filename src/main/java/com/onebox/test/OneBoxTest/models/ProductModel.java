@@ -1,31 +1,30 @@
 package com.onebox.test.OneBoxTest.models;
 
 import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 public class ProductModel {
 
-	private int id;
+	private Long id;
 	
-	@NotBlank(message = "Description can't be empty.")
-	@NotNull(message = "Description can't be NULL.")
+	@NotEmpty(message = "Description can't be empty.")
+	@NotNull(message = "Description is mandatory.")
 	private String description;
 	
 	@DecimalMin(value="0.0", message = "Amount can't be less than 0.")
-	@NotNull(message = "Amount can't be NULL.")
+	@NotNull(message = "Amount is mandatory.")
 	private Double amount;
 	
-	private static int countId = 0;
+	private static long countId = 0;
 	
 	public ProductModel(String description, Double amount) {
 		this.id=countId++;
 		this.description=description;
 		this.amount=amount;
-		
 	}
 	
-	public ProductModel(int id, String description, Double amount) {
+	public ProductModel(Long id, String description, Double amount) {
 		this.id=id;
 		this.description=description;
 		this.amount=amount;
@@ -36,11 +35,11 @@ public class ProductModel {
 		
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
