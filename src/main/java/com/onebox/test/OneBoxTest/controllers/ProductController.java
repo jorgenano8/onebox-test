@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,15 +41,24 @@ public class ProductController {
 	@PostMapping
 	public ResponseEntity<String> addProduct(@Valid @RequestBody ProductModel product, BindingResult bindingResult){
 		if(bindingResult.hasErrors()) {
-			return new ResponseEntity<>("Error creating product. Check the fields: " + bindingResult.getFieldError().getDefaultMessage() , HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Error creating product. Check the fields. " + bindingResult.getFieldError().getDefaultMessage() , HttpStatus.BAD_REQUEST);
 		}
 		
 		this.productService.addProduct(product);
 		return new ResponseEntity<>("Product successfully created.", HttpStatus.OK);
 	}
 	
+	@PutMapping(path="/{productId}")
+	public ResponseEntity<String> updateProduct(@PathVariable Long productId, @Valid @RequestBody ProductModel product, BindingResult bindingResult) {
+		if(bindingResult.hasErrors() || this.productService.getProductById(productId).isEmpty()) {
+			return new ResponseEntity<>("Error updating product. Check the fields. " + bindingResult.getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
+		}
+		this.productService.updateProduct(product, productId);
+		return new ResponseEntity<>("Product successfully updated.", HttpStatus.OK);
+	}
+	
 	@DeleteMapping(path="/{productId}")
-	public void removeProductbyId(@PathVariable int productId) {
+	public void removeProductbyId(@PathVariable Long productId) {
 		this.productService.removeProductById(productId);
 	}
 

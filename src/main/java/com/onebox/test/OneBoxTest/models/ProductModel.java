@@ -16,7 +16,7 @@ public class ProductModel {
 	@NotNull(message = "Amount is mandatory.")
 	private Double amount;
 	
-	private static long countId = 0;
+	private static long countId = 1;
 	
 	public ProductModel(String description, Double amount) {
 		this.id=countId++;
@@ -51,7 +51,7 @@ public class ProductModel {
 		this.description = description;
 	}
 	
-	public double getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 	

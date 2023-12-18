@@ -27,7 +27,15 @@ public class ProductService {
 		this.productRepository.addProduct(new ProductModel(product.getDescription(), product.getAmount()));
 	}
 	
-	public void removeProductById(int productId) {
+	public void updateProduct(ProductModel product, Long productId) {
+		ProductModel productToUpdate = this.getProductById(productId).get();
+		
+		productToUpdate.setDescription(product.getDescription());
+		productToUpdate.setAmount(product.getAmount());
+		
+	}
+	
+	public void removeProductById(Long productId) {
 		this.productRepository.removeProductById(productId);
 	}
 	

@@ -39,8 +39,12 @@ public class IProductRepository {
 		this.productList.add(product);
 	}
 	
+	public void updateProduct(ProductModel product, Long productId) {
+		this.productList.add(product);
+	}
 	
-	public void removeProductById(int productId) {
+	
+	public void removeProductById(Long productId) {
 		this.productList.removeIf(product -> product.getId() == productId);
 	}
 }
