@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.onebox.test.OneBoxTest.models.CartModel;
@@ -53,6 +54,10 @@ public class CartService {
 
 	public void removeCartById(Long cartId) {
 		this.cartRepository.removeCartById(cartId);
+	}
+	@Scheduled(fixedDelay=1000)
+	public void scheduledRemoveCart() {
+		this.cartRepository.scheduledRemoveCart();
 	}
 	
 }

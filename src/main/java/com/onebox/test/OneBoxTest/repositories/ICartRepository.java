@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 
 import com.onebox.test.OneBoxTest.models.CartModel;
@@ -39,7 +38,6 @@ public class ICartRepository {
 		this.cartList.removeIf(cart -> cart.getId() == cartId);
 	}
 	
-	@Scheduled(fixedDelay=1000)
 	public void scheduledRemoveCart() {
 		this.getAllCarts().removeIf(cart -> LocalDateTime.now().isAfter(cart.getDateCreation().plusMinutes(10)));
 	}
